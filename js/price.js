@@ -1,10 +1,9 @@
-var xbtc = new XMLHttpRequest();
-xbtc.open('GET', 'https://api.bitcoinaverage.com/ticker/global/USD/', true);
-xbtc.onreadystatechange = function(){
-	if(xbtc.readyState == 4){
-		var ticker = JSON.parse(xbtc.responseText);
-		var price = ticker.last;
-		document.getElementById('btc').innerHTML = "$" + price;
-	}
-};
-xbtc.send();
+$.ajax({
+        async: true,
+        type: "GET",
+        url: "https://www.bitstamp.net/api/ticker/",
+        success: function(result) {
+          data = result.last;
+          document.getElementById("btc").innerHTML = data;
+          }
+});
